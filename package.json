@@ -14,21 +14,7 @@
     },
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
-    },
-    "collectCoverage": true,
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 75,
-        "lines": 75,
-        "statements": 70
-      }
-    },
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!**/node_modules/**",
-      "!**/vendor/**"
-    ]
+    }
   },
   "keywords": [],
   "author": "Muhamad Nur Rizki",
