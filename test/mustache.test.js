@@ -1,4 +1,5 @@
 import Mustache from "mustache";
+import fs from "fs/promises";
 
 test("Menggunakan Muustache", () => {
   const data = Mustache.render("Hello, {{name}}", { name: "Rizki" });
@@ -30,4 +31,29 @@ test("Tags", () => {
   expect(data).toBe(
     "Halo, nama saya Muhamad Nur Rizki, saya tinggal di <b>Tangerang</b>",
   );
+});
+
+test("Nested Object", () => {
+  Mustache.parse("Halo, nama saya {{person.name}}");
+
+  const data = Mustache.render("Halo, nama saya {{person.name}}", {
+    person: {
+      name: "Muhamad Nur Rizki",
+      age: 19,
+    },
+  });
+
+  expect(data).toBe("Halo, nama saya Muhamad Nur Rizki");
+});
+
+test("Test Mustache file", async () => {
+  const template = await fs
+    .readFile("./templates/hello.mustache")
+    .then((data) => data.toString());
+
+  const data = Mustache.render(template, { name: "rizki" });
+
+  console.log(data);
+
+  expect(data).toContain("rizki");
 });
