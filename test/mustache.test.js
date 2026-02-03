@@ -86,14 +86,18 @@ test("Test Mustache Sections Show", async () => {
   expect(data).toContain("Hello Person Rizki");
 });
 
-test("Inverted Sections", async () => {
+test("List", async () => {
   const template = await fs
-    .readFile("./templates/person.mustache")
+    .readFile("./templates/hobbies.mustache")
     .then((data) => data.toString());
 
-  const data = Mustache.render(template, {});
+  const data = Mustache.render(template, {
+    hobbies: ["main game", "rebahan", "makan"],
+  });
 
   console.log(data);
 
-  expect(data).toContain("Hello Guest");
+  expect(data).toContain("main game");
+  expect(data).toContain("rebahan");
+  expect(data).toContain("makan");
 });
