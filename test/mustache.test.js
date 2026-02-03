@@ -77,11 +77,11 @@ test("Test Mustache Sections Show", async () => {
 
   const data = Mustache.render(template, {
     person: {
-      name: "Muhamad Nur Rizki",
+      name: "Rizki",
     },
   });
 
   console.log(data);
 
-  expect(data).toContain("Hello Person");
+  expect(data).toContain("Hello Person Rizki");
 });
