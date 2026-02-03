@@ -57,3 +57,31 @@ test("Test Mustache file", async () => {
 
   expect(data).toContain("rizki");
 });
+
+test("Test Mustache Sections not Show", async () => {
+  const template = await fs
+    .readFile("./templates/person.mustache")
+    .then((data) => data.toString());
+
+  const data = Mustache.render(template, {});
+
+  console.log(data);
+
+  expect(data).not.toContain("Hello Person");
+});
+
+test("Test Mustache Sections Show", async () => {
+  const template = await fs
+    .readFile("./templates/person.mustache")
+    .then((data) => data.toString());
+
+  const data = Mustache.render(template, {
+    person: {
+      name: "Muhamad Nur Rizki",
+    },
+  });
+
+  console.log(data);
+
+  expect(data).toContain("Hello Person");
+});
