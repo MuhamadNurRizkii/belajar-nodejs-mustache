@@ -85,3 +85,15 @@ test("Test Mustache Sections Show", async () => {
 
   expect(data).toContain("Hello Person Rizki");
 });
+
+test("Inverted Sections", async () => {
+  const template = await fs
+    .readFile("./templates/person.mustache")
+    .then((data) => data.toString());
+
+  const data = Mustache.render(template, {});
+
+  console.log(data);
+
+  expect(data).toContain("Hello Guest");
+});
